@@ -75,7 +75,7 @@ const Form = ({ job, onClose, handleRefresh }) => {
             if (data.success){
                 onClose();
                 handleRefresh();
-                console.log('function')
+                console.log(handleRefresh)
             }
         } catch (error) {
             alert('Oops! Something went wrong.')
