@@ -4,7 +4,6 @@ import CreateJobButton from '../components/CreateJobButton';
 import { getJobs } from '../api/getJobs';
 
 const Home = () => {
-
     const [jobs, setJobs] = useState([]);
     const [fetching, setFetching] = useState(false);
 
@@ -13,7 +12,7 @@ const Home = () => {
             setFetching(true);
             const jobsData = await getJobs();
             setJobs(jobsData);
-            console.log(jobsData);
+            // console.log(jobsData);
         } catch (error) {
             console.error('Error fetching jobs:', error);
         } finally {
@@ -27,7 +26,9 @@ const Home = () => {
 
     const handleRefresh = () => {
         if (!fetching) {
+            console.log('up')
             fetchData();
+            console.log('down')
         }
     };
 

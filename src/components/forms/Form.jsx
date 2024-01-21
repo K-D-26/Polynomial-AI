@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Form1 from './Form1'
 import Form2 from './Form2'
 import { createJob } from '../../api/createJob';
+import { updateJob } from '../../api/updateJob';
 
 const Form = ({ job, onClose, handleRefresh }) => {
     const [page, setPage] = useState(0);
@@ -19,23 +20,25 @@ const Form = ({ job, onClose, handleRefresh }) => {
         applyType: '',
     });
 
-    if (job !== null) {
-        setFormData({
-            jobTitle: job.jobTitle,
-            companyName: job.companyName,
-            industry: job.industry,
-            location: job.location,
-            remoteType: job.remoteType,
-            minExp: job.minExp,
-            maxExp: job.maxExp,
-            minSal: job.minSal,
-            maxSal: job.maxSal,
-            totalEmployees: job.totalEmployees,
-            applyType: job.applyType,
-        });
-    }
+    useEffect(() => {
+        if (job !== null) {
+            setFormData({
+                jobTitle: job.jobTitle,
+                companyName: job.companyName,
+                industry: job.industry,
+                location: job.location,
+                remoteType: job.remoteType,
+                minExp: job.minExp,
+                maxExp: job.maxExp,
+                minSal: job.minSal,
+                maxSal: job.maxSal,
+                totalEmployees: job.totalEmployees,
+                applyType: job.applyType,
+            });
+        }
+    }, []);
 
-    console.log(formData);
+    // console.log(formData);
 
     const handleClick1 = (e) => {
         e.preventDefault();
@@ -61,13 +64,33 @@ const Form = ({ job, onClose, handleRefresh }) => {
             }
         } catch (error) {
             alert('Oops! Something went wrong.')
-            console.error('Error deleting job:', error);
+            console.error('Error creating job:', error);
+        }
+    };
+
+    const updateJobs = async () => {
+        try {
+            const data = await updateJob(job.id, formData);
+            console.log(data);
+            if (data.success){
+                onClose();
+                handleRefresh();
+                console.log('function')
+            }
+        } catch (error) {
+            alert('Oops! Something went wrong.')
+            console.error('Error updating job:', error);
         }
     };
 
     const handleClick2 = (e) => {
         e.preventDefault();
-        createJobs();
+        if (job === null) {
+            createJobs();
+        }
+        else {
+            updateJobs();
+        }
     }
 
     const handleBackClick = (e) => {

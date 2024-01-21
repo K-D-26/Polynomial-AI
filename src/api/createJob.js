@@ -11,7 +11,7 @@ export const createJob = async (formData) => {
     }
 
     const jobsData = await response.json();
-    console.log(jobsData);
+    // console.log(jobsData);
     return {
       success: true,
       message: 'Job added successfully',
