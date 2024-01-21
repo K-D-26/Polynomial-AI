@@ -3,7 +3,7 @@ import Form1 from './Form1'
 import Form2 from './Form2'
 import { createJob } from '../../api/createJob';
 
-const Form = ({ job, onClose }) => {
+const Form = ({ job, onClose, handleRefresh }) => {
     const [page, setPage] = useState(0);
     const [formData, setFormData] = useState({
         jobTitle: '',
@@ -19,6 +19,24 @@ const Form = ({ job, onClose }) => {
         applyType: '',
     });
 
+    if (job !== null) {
+        setFormData({
+            jobTitle: job.jobTitle,
+            companyName: job.companyName,
+            industry: job.industry,
+            location: job.location,
+            remoteType: job.remoteType,
+            minExp: job.minExp,
+            maxExp: job.maxExp,
+            minSal: job.minSal,
+            maxSal: job.maxSal,
+            totalEmployees: job.totalEmployees,
+            applyType: job.applyType,
+        });
+    }
+
+    console.log(formData);
+
     const handleClick1 = (e) => {
         e.preventDefault();
         const requiredFields = ['jobTitle', 'companyName', 'industry'];
@@ -33,17 +51,23 @@ const Form = ({ job, onClose }) => {
         }
     }
 
+    const createJobs = async () => {
+        try {
+            const data = await createJob(formData);
+            console.log(data);
+            if(data.success){
+                onClose();
+                handleRefresh();
+            }
+        } catch (error) {
+            alert('Oops! Something went wrong.')
+            console.error('Error deleting job:', error);
+        }
+    };
+
     const handleClick2 = (e) => {
         e.preventDefault();
-        const data = createJob(formData);
-        console.log()
-        if (data.success) {
-            onClose();
-            alert("Job Created successfully.")
-        }
-        else {
-            alert('Oops! Something went wrong.')
-        }
+        createJobs();
     }
 
     const handleBackClick = (e) => {

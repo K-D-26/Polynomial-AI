@@ -3,12 +3,12 @@ import logoImg from "../../assets/images/logo.png"
 import { deleteJob } from '../../api/deleteJob';
 import JobFormPopup from '../JobFormPopup';
 
-const JobCard = ({job, handleRefresh }) => {
-    const jobId = job.id;
+const JobCard = ({ job, handleRefresh }) => {
     const [showPopup, setShowPopup] = useState(false);
 
-    const handleUpdate = () => {
-        setShowPopup(true);
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        setShowPopup(prevState => !prevState);
     };
 
     const deleteData = async () => {

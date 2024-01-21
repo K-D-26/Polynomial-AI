@@ -1,7 +1,7 @@
 import React , { useRef } from 'react';
 import Form from './forms/Form';
 
-const JobFormPopup = ({ job, onClose }) => {
+const JobFormPopup = ({ job, onClose, handleRefresh }) => {
 
     const modalRef = useRef()
 
@@ -20,7 +20,7 @@ const JobFormPopup = ({ job, onClose }) => {
                     </svg>
                 </button>
 
-                <Form job={job} onClose={onClose} />
+                <Form job={job} onClose={onClose} handleRefresh={handleRefresh} />
             </div>
         </div>
     );

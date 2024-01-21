@@ -34,7 +34,7 @@ const Home = () => {
     return (
         <>
             <div className="absolute top-4 left-4">
-                <CreateJobButton />
+                <CreateJobButton handleRefresh={handleRefresh} />
                 {fetching ? (
                     <p className="text-xl font-normal text-gray-700">Loading...</p>
                 ) : (
