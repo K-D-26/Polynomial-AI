@@ -5,12 +5,15 @@ export const deleteJob = async (id) => {
     });
 
     if (!response.ok) {
-      // Check if the response is not OK, throw an error with the status text
       throw new Error(`Failed to delete job. Status: ${response.statusText}`);
     }
 
     const task = await response.json();
-    console.log(task);
+    //console.log(task);
+    return {
+      success: true,
+      message: 'Job deleted successfully',
+    };
   } catch (error) {
     console.error('Error deleting job:', error.message);
     throw error;

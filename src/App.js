@@ -1,10 +1,12 @@
 import './App.css';
-import CreateJobButton from './components/CreateJobButton';
+//import CreateJobButton from './components/CreateJobButton';
+import Home from './pages/Home';
 
 function App() {
   return (
     <div>
-      <CreateJobButton />
+      <Home/>
+      {/* <CreateJobButton /> */}
     </div>
   );
 }

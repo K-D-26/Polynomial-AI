@@ -3,7 +3,7 @@ import Input from '../Input';
 import RadioButton from '../RadioButton';
 import Button from '../Button';
 
-const Form2 = ({ formData, setFormData, onClick }) => {
+const Form2 = ({ formData, setFormData, onClick, onBackClick }) => {
   const [applyType, setApplyType] = useState();
 
   const handleApplyTypeChange = (value) => {
@@ -92,7 +92,12 @@ const Form2 = ({ formData, setFormData, onClick }) => {
         />
       </form>
 
-      <div className="flex flex-col items-end">
+      <div className="flex justify-between">
+        <Button
+          name="Back"
+          onClick={onBackClick}
+        />
+
         <Button 
           name="Save" 
           onClick={onClick} 

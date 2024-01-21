@@ -1,7 +1,7 @@
 import React , { useRef } from 'react';
 import Form from './forms/Form';
 
-const JobFormPopup = ({ onClose }) => {
+const JobFormPopup = ({ job, onClose }) => {
 
     const modalRef = useRef()
 
@@ -12,7 +12,7 @@ const JobFormPopup = ({ onClose }) => {
     }
 
     return (
-        <div ref={modalRef} onClick={handleModal} className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 backdrop-blur-sm">
+        <div ref={modalRef} onClick={handleModal} className="z-10 fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 backdrop-blur-sm">
             <div className="flex flex-col items-end">
                 <button onClick={onClose} className='mb-2 mt-2' >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -20,8 +20,7 @@ const JobFormPopup = ({ onClose }) => {
                     </svg>
                 </button>
 
-                <Form onClose={onClose} />
-
+                <Form job={job} onClose={onClose} />
             </div>
         </div>
     );

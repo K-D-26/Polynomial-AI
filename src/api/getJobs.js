@@ -10,7 +10,7 @@ export const getJobs = async () => {
     }
 
     const jobsData = await response.json();
-    console.log(jobsData);
+    //console.log(jobsData);
     return jobsData;
   } catch (error) {
     console.error('Error fetching jobs:', error);

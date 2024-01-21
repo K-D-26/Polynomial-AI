@@ -3,7 +3,7 @@ import Form1 from './Form1'
 import Form2 from './Form2'
 import { createJob } from '../../api/createJob';
 
-const Form = ({ onClose }) => {
+const Form = ({ job, onClose }) => {
     const [page, setPage] = useState(0);
     const [formData, setFormData] = useState({
         jobTitle: '',
@@ -46,12 +46,17 @@ const Form = ({ onClose }) => {
         }
     }
 
+    const handleBackClick = (e) => {
+        e.preventDefault();
+        setPage(0);
+    }
+
     const PageDisplay = () => {
         if (page === 0) {
             return <Form1 formData={formData} setFormData={setFormData} onClick={handleClick1} />
         }
         else {
-            return <Form2 formData={formData} setFormData={setFormData} onClick={handleClick2} />
+            return <Form2 formData={formData} setFormData={setFormData} onClick={handleClick2} onBackClick={handleBackClick} />
         }
     };
 

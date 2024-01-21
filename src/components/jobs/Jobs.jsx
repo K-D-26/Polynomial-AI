@@ -1,12 +1,12 @@
 import React from 'react';
 import JobCard from './JobCard';
 
-const Jobs = ({ jobs, handleJobDeleted }) => {
+const Jobs = ({ jobs, handleRefresh }) => {
   return (
-    <div className="flex flex-wrap -mx-4">
+    <div className="flex flex-wrap mx-4">
       {jobs.map((job, index) => (
         <div key={index} className="w-1/2 px-4 mb-4">
-          <JobCard job={job} handleJobDeleted={handleJobDeleted} />
+          <JobCard job={job} handleRefresh={handleRefresh} />
         </div>
       ))}
     </div>
