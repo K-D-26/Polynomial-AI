@@ -37,7 +37,7 @@ const Home = () => {
             <div className="absolute top-4 left-4">
                 <CreateJobButton handleRefresh={handleRefresh} />
                 
-                <div className='bg-[#E6E6E6] px-10 py-6 mx-2'>
+                <div className='bg-[#E6E6E6] px-10 py-6 mx-2' >
                     {fetching ? (
                         <p className="text-xl font-normal text-gray-700">Loading...</p>
                     ) : (

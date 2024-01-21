@@ -30,7 +30,7 @@ const JobCard = ({ job, handleRefresh }) => {
 
     return (
         <>
-            <div className="bg-[#FFFFFF] rounded-lg shadow-md p-6 flex w-[600px] mb-4 relative border border-[#E6E6E6]">
+            <div className="bg-[#FFFFFF] rounded-lg shadow-md p-6 flex w-[650px] mb-4 relative border border-[#E6E6E6]">
                 <div className="mr-3">
                     <div className="company-logo-img">
                         <img className="w-12 h-12 object-cover rounded" src={logoImg} alt="logo" />
