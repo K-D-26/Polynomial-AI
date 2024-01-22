@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 export const getJobs = async () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   try {
-    const response = await axios.get('https://65ac0e21fcd1c9dcffc7852c.mockapi.io/test/job', {
+    const response = await axios.get(`${apiUrl}/test/job`, {
       headers: { 'Content-Type': 'application/json' },
     });
 

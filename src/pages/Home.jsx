@@ -26,9 +26,7 @@ const Home = () => {
 
     const handleRefresh = () => {
         if (!fetching) {
-            console.log('up')
             fetchData();
-            console.log('down')
         }
     };
 

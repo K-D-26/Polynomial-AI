@@ -14,7 +14,7 @@ const JobCard = ({ job, handleRefresh }) => {
     const deleteData = async () => {
         try {
             const mssg = await deleteJob(job.id);
-            console.log(mssg);
+            // console.log(mssg);
             if (mssg.success){
                 handleRefresh();
             }

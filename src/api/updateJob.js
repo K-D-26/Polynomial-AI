@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 export const updateJob = async (id, formData) => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   try {
-    const response = await axios.put(`https://65ac0e21fcd1c9dcffc7852c.mockapi.io/test/job/${id}`, formData, {
+    const response = await axios.put(`${apiUrl}/test/job/${id}`, formData, {
       headers: {'Content-Type': 'application/json'},
     });
 

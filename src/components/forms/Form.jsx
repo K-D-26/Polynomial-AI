@@ -36,7 +36,7 @@ const Form = ({ job, onClose, handleRefresh }) => {
                 applyType: job.applyType,
             });
         }
-    }, []);
+    }, [job]);
 
     // console.log(formData);
 
@@ -57,7 +57,7 @@ const Form = ({ job, onClose, handleRefresh }) => {
     const createJobs = async () => {
         try {
             const data = await createJob(formData);
-            console.log(data);
+            // console.log(data);
             if(data.success){
                 onClose();
                 handleRefresh();
@@ -71,11 +71,10 @@ const Form = ({ job, onClose, handleRefresh }) => {
     const updateJobs = async () => {
         try {
             const data = await updateJob(job.id, formData);
-            console.log(data);
+            // console.log(data);
             if (data.success){
                 onClose();
                 handleRefresh();
-                console.log(handleRefresh)
             }
         } catch (error) {
             alert('Oops! Something went wrong.')

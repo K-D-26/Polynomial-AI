@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 export const deleteJob = async (id) => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   try {
-    const response = await axios.delete(`https://65ac0e21fcd1c9dcffc7852c.mockapi.io/test/job/${id}`);
+    const response = await axios.delete(`${apiUrl}/test/job/${id}`);
 
     if (response.status !== 200) {
       throw new Error(`Failed to delete job. Status: ${response.statusText}`);
