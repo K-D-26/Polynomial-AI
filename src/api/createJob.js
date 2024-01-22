@@ -1,16 +1,14 @@
+import axios from 'axios';
+
 export const createJob = async (formData) => {
   try {
-    const response = await fetch('https://65ac0e21fcd1c9dcffc7852c.mockapi.io/test/job', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(formData),
+    const response = await axios.post('https://65ac0e21fcd1c9dcffc7852c.mockapi.io/test/job', formData, {
+      headers: { 'Content-Type': 'application/json' },
     });
 
-    if (!response.ok) {
+    if (response.status !== 201) {
       throw new Error('Failed to add job');
     }
-
-    const jobsData = await response.json();
 
     return {
       success: true,
